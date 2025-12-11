@@ -1,0 +1,74 @@
+/* Cores personalizadas */
+:root {
+    --lilas: #b388ff;
+    --lilas-dark: #7c4dff;
+    --lilas-light: #e1bee7;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f9f5ff, #ffffff);
+  }
+  
+  .bg-lilas {
+    background-color: var(--lilas);
+  }
+  
+  .bg-lilas-dark {
+    background-color: var(--lilas-dark);
+  }
+  
+  .btn-lilas {
+    background-color: var(--lilas-dark);
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-lilas:hover {
+    background-color: var(--lilas);
+  }
+  
+  .alert-lilas {
+    background-color: var(--lilas-light);
+    color: #4a148c;
+    border: 1px solid var(--lilas);
+  }
+  
+  .card {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  footer a {
+    color: #ffffff !important;
+  }
+
+  /* Ajustes finos de responsividade */
+@media (max-width: 576px) {
+    header h1 {
+      font-size: 1.5rem;
+    }
+    header small {
+      font-size: 0.8rem;
+    }
+    .card-body {
+      padding: 1.5rem !important;
+    }
+    .btn-lg {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+    }
+    footer small {
+      font-size: 0.75rem;
+    }
+  }
