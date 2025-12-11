@@ -185,12 +185,9 @@ def processar():
             })
 
     # Remove alvos do conjunto
-    alvos_descricoes_exatas = {
-    "FILTRO DE PAPEL N103 30UND BRIGITTA",
-    "ACUCAR CRISTAL 5KG PAINEIRAS",
-    "CAFE TRAD FORTE ALMOFADA 250GR CAFUSO"
-    }
-    remaining = [it for it in all_items if it["descricao"].strip() not in alvos_descricoes_exatas]
+    alvos_norm_set = {normalize(it["descricao"]) for it in alvos_encontrados}
+    remaining = [it for it in all_items if it["descricao_norm"] not in alvos_norm_set]
+
 
 
 
@@ -210,7 +207,11 @@ def processar():
         return 0.0
 
     remaining_clean = [it for it in remaining if it["descricao"]]
-    total_limpeza = round(sum(total_item(it) for it in remaining_clean), 2)
+    # Subtrai o valor do filtro se ele foi encontrado no relatório 1
+    filtro_item = next((it for it in alvos_encontrados if "FILTRO DE PAPEL N103" in it["descricao"]), None)
+    filtro_valor = filtro_item["total"] if filtro_item and filtro_item["total"] else 0.0
+    total_limpeza = round(sum(total_item(it) for it in remaining_clean) - filtro_valor, 2)
+
 
     # Frete
     m_frete = re.search(r"VALOR DO FRETE\s+([0-9]{1,3}(?:\.[0-9]{3})*,[0-9]{2})", text, re.IGNORECASE)
