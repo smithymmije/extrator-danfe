@@ -185,8 +185,9 @@ def processar():
             })
 
     # Remove alvos do conjunto
-    alvos_descricoes = {it["descricao"] for it in alvos_encontrados}
-    remaining = [it for it in all_items if it["descricao"] not in alvos_descricoes]
+    alvos_norm_set = {normalize(it["descricao"]) for it in alvos_encontrados}
+    remaining = [it for it in all_items if it["descricao_norm"] not in alvos_norm_set]
+
 
 
     def unit_price(it):
