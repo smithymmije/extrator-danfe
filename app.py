@@ -185,8 +185,13 @@ def processar():
             })
 
     # Remove alvos do conjunto
-    alvos_norm_set = {normalize(it["descricao"]) for it in alvos_encontrados}
-    remaining = [it for it in all_items if it["descricao_norm"] not in alvos_norm_set]
+    alvos_descricoes_exatas = {
+    "FILTRO DE PAPEL N103 30UND BRIGITTA",
+    "ACUCAR CRISTAL 5KG PAINEIRAS",
+    "CAFE TRAD FORTE ALMOFADA 250GR CAFUSO"
+    }
+    remaining = [it for it in all_items if it["descricao"].strip() not in alvos_descricoes_exatas]
+
 
 
 
