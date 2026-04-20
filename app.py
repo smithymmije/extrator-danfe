@@ -131,7 +131,7 @@ def processar():
             alvos_encontrados.append(it)
 
     partes1 = [f"{fmt_qty(it['quantidade'])} {it['descricao']}" for it in alvos_encontrados]
-    relatorio1 = ", ".join(partes1) + f", alocados direto na {filial}, para atender demandas de copa e cozinha, referente a Março/2026 - NF{nf_num} Fornecedor Coletar."
+    relatorio1 = ", ".join(partes1) + f", alocados direto na {filial}, para atender demandas de copa e cozinha, referente a Abril/2026 - NF{nf_num} Fornecedor Coletar."
     total_alvos = round(sum((it.get("total") or 0) for it in alvos_encontrados), 2)
 
     # EXTRAI TODOS OS ITENS
@@ -221,7 +221,7 @@ def processar():
     # Top 2
     top2 = sorted(remaining_clean, key=lambda x: unit_price(x), reverse=True)[:2]
     partes2 = [f"{fmt_qty(it['quantidade'])} {it['descricao']}" for it in top2]
-    relatorio2 = ", ".join(partes2) + f", alocados direto na {filial}, para atender demandas de limpeza, referente a Março/2026 - NF{nf_num} Fornecedor Coletar."
+    relatorio2 = ", ".join(partes2) + f", alocados direto na {filial}, para atender demandas de limpeza, referente a Abril/2026 - NF{nf_num} Fornecedor Coletar."
 
     # Monta relatório final (igual ao Colab: dois parágrafos e totais)
     resultado_text = (
